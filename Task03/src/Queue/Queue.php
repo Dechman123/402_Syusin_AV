@@ -7,17 +7,17 @@ use App\QueueInterface;
 class Queue implements QueueInterface {
     private $queue = array();
 
-    public function __construct(mixed ...$elements) {
+    public function __construct(...$elements) {
         $this->enqueue(...$elements);
     }
 
-    public function enqueue(mixed ...$elements): void {
+    public function enqueue( ...$elements): void {
         foreach ($elements as $elem) {
             array_push($this->queue, $elem);
         }
     }
 
-    public function dequeue(): mixed {
+    public function dequeue() {
         if (!isset($this->queue[0])) {
             return null;
         }
@@ -25,7 +25,7 @@ class Queue implements QueueInterface {
         return array_shift($this->queue);
     }
 
-    public function peek(): mixed {
+    public function peek() {
         if (!isset($this->queue[0])) {
             return null;
         }

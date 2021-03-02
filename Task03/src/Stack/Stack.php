@@ -7,17 +7,17 @@ use App\StackInterface;
 class Stack implements StackInterface {
     private $stack = array();
 
-    public function __construct(mixed ...$elements) {
+    public function __construct( ...$elements) {
         $this->push(...$elements);
     }
 
-    public function push(mixed ...$elements): void {
+    public function push( ...$elements): void {
         foreach ($elements as $elem) {
             array_push($this->stack, $elem);
         }
     }
 
-    public function pop(): mixed {
+    public function pop() {
         if (count($this->stack) == 0) {
             return null;
         }
@@ -25,7 +25,7 @@ class Stack implements StackInterface {
         return array_pop($this->stack);
     }
 
-    public function top(): mixed {
+    public function top() {
         if (count($this->stack) != 0) {
             return $this->stack[count($this->stack) - 1];
         } else {
